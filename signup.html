@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Sign Up — Yan Clothing</title>
 
-    <!-- Your external CSS -->
+    <!-- External CSS -->
     <link rel="stylesheet" href="styles.css">
 
     <!-- Bootstrap 5.3 CDN -->
@@ -21,14 +21,14 @@
 </head>
 <body>
 
-<!-- Header (match your index header for consistency) -->
+<!-- Header -->
 <header style="background-color: #a8dadc; padding: 20px; text-align: center;">
     <h1>Yan Clothing</h1>
     <p class="highlight">Sportswear & Streetwear</p>
 </header>
 
 <!-- Navigation Bar  -->
-<nav>
+<nav aria-label="Primary">
     <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="#">Shop</a></li>
@@ -53,7 +53,7 @@
                     <!-- Username -->
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
-                        <input id="username" name="username" type="text" class="form-control" required minlength="3"
+                        <input id="username" name="username" type="text" class="form-control" required aria-required="true" minlength="3"
                                placeholder="Enter a username" autocomplete="username">
                         <div class="invalid-feedback">Please enter a username (3+ characters).</div>
                     </div>
@@ -61,7 +61,7 @@
                     <!-- Email -->
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input id="email" name="email" type="email" class="form-control" required
+                        <input id="email" name="email" type="email" class="form-control" required aria-required="true"
                                placeholder="you@example.com" autocomplete="email">
                         <div class="invalid-feedback">Please enter a valid email address.</div>
                     </div>
@@ -69,7 +69,7 @@
                     <!-- Password -->
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input id="password" name="password" type="password" class="form-control" required minlength="8"
+                        <input id="password" name="password" type="password" class="form-control" required aria-required="true" minlength="8"
                                placeholder="Min 8 characters" autocomplete="new-password">
                         <div class="form-text">Use at least 8 characters.</div>
                         <div class="invalid-feedback">Please enter a password (min 8 characters).</div>
@@ -78,9 +78,9 @@
                     <!-- Confirm Password -->
                     <div class="mb-4">
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" required minlength="8"
+                        <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" required aria-required="true" minlength="8"
                                placeholder="Re-enter your password" autocomplete="new-password">
-                        <div id="matchFeedback" class="invalid-feedback">Passwords must match.</div>
+                        <div id="matchFeedback" class="invalid-feedback" style="display:none">Passwords must match.</div>
                     </div>
 
                     <div class="d-grid gap-2">
@@ -140,9 +140,10 @@
             if (cpw.value && pw.value !== cpw.value) {
                 cpw.setCustomValidity('Passwords must match');
                 feedback.textContent = 'Passwords must match.';
+                feedback.style.display = 'block';
             } else {
                 cpw.setCustomValidity('');
-                feedback.textContent = 'Passwords must match.'; // visible only when invalid
+                feedback.style.display = 'none';
             }
         }
         pw.addEventListener('input', checkMatch);
